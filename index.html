@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#07111f" />
+    <title>方块信号塔｜俄罗斯方块演示关卡</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="page-shell">
+      <header class="hero">
+        <div>
+          <p class="eyebrow"><span></span> SINGLE LEVEL DEMO</p>
+          <h1>方块信号塔</h1>
+          <p class="subtitle">把散落的信号拼成完整的一行。</p>
+        </div>
+        <button class="icon-button" id="soundButton" type="button" aria-label="关闭音效" title="开关音效">
+          <span aria-hidden="true">♪</span>
+        </button>
+      </header>
+
+      <section class="game-layout" aria-label="俄罗斯方块游戏">
+        <aside class="side-panel mission-panel">
+          <p class="panel-label">MISSION 01</p>
+          <h2>点亮信号塔</h2>
+          <p class="mission-copy">在方块堆到顶端前，消除 8 行信号。</p>
+
+          <div class="progress-block">
+            <div class="progress-copy">
+              <span>关卡进度</span>
+              <strong><span id="linesValue">0</span> / 8</strong>
+            </div>
+            <div class="progress-track" aria-hidden="true">
+              <div class="progress-fill" id="progressFill"></div>
+            </div>
+          </div>
+
+          <dl class="stats-grid">
+            <div>
+              <dt>得分</dt>
+              <dd id="scoreValue">000000</dd>
+            </div>
+            <div>
+              <dt>连击</dt>
+              <dd><span id="comboValue">0</span><small>×</small></dd>
+            </div>
+          </dl>
+
+          <div class="tip-card">
+            <span class="tip-icon">✦</span>
+            <p><strong>演示提示</strong>空格键可以让方块直接落到底部。</p>
+          </div>
+        </aside>
+
+        <div class="board-column">
+          <div class="board-frame">
+            <div class="board-status">
+              <span class="status-dot"></span>
+              <span id="statusText">等待启动</span>
+            </div>
+            <canvas id="gameCanvas" width="300" height="600" aria-label="俄罗斯方块游戏区域"></canvas>
+
+            <div class="game-overlay is-visible" id="gameOverlay">
+              <div class="overlay-symbol" id="overlaySymbol">▦</div>
+              <p class="overlay-kicker" id="overlayKicker">READY?</p>
+              <h2 id="overlayTitle">信号等待接入</h2>
+              <p id="overlayCopy">清除 8 行完成演示关卡</p>
+              <button class="primary-button" id="startButton" type="button">开始挑战 <span>→</span></button>
+            </div>
+          </div>
+
+          <div class="mobile-controls" aria-label="触屏操作">
+            <button type="button" data-action="left" aria-label="向左移动">←</button>
+            <button type="button" data-action="rotate" aria-label="旋转">↻</button>
+            <button type="button" data-action="right" aria-label="向右移动">→</button>
+            <button type="button" data-action="down" aria-label="加速下落">↓</button>
+            <button class="drop-button" type="button" data-action="drop" aria-label="直接落下">DROP</button>
+          </div>
+        </div>
+
+        <aside class="side-panel control-panel">
+          <div>
+            <p class="panel-label">NEXT SIGNAL</p>
+            <div class="next-piece-box">
+              <canvas id="nextCanvas" width="140" height="120" aria-label="下一个方块"></canvas>
+            </div>
+          </div>
+
+          <div class="keyboard-guide">
+            <p class="panel-label">CONTROLS</p>
+            <div class="control-row">
+              <span class="keys"><kbd>←</kbd><kbd>→</kbd></span>
+              <span>左右移动</span>
+            </div>
+            <div class="control-row">
+              <span class="keys"><kbd>↑</kbd></span>
+              <span>旋转方块</span>
+            </div>
+            <div class="control-row">
+              <span class="keys wide"><kbd>SPACE</kbd></span>
+              <span>快速落下</span>
+            </div>
+            <div class="control-row">
+              <span class="keys"><kbd>P</kbd></span>
+              <span>暂停游戏</span>
+            </div>
+          </div>
+
+          <button class="secondary-button" id="restartButton" type="button">
+            <span aria-hidden="true">↺</span> 重新开始
+          </button>
+        </aside>
+      </section>
+
+      <footer>
+        <span>DEMO BUILD 01</span>
+        <span class="footer-line"></span>
+        <span>保持冷静，让缝隙消失。</span>
+      </footer>
+    </main>
+
+    <script src="game.js"></script>
+  </body>
+</html>
